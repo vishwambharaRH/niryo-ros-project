@@ -1,7 +1,10 @@
-# niryo-ros-project
+# niryo-ros-project  
 Gesture control on Niryo using OpenCV.
 
+---
+
 ## Ideal Path Structure
+```bash
 gesture_control_niryo_ws/
 ├── src/
 │   ├── gesture_recognition/ `actually completed`
@@ -18,7 +21,7 @@ gesture_control_niryo_ws/
 │   │   ├── package.xml
 │   │   └── setup.py
 │   │
-│   ├── gesture_control_interface/ 
+│   ├── gesture_control_interface/
 │   │   ├── gesture_control_interface/
 │   │   │   ├── __init__.py
 │   │   │   ├── gesture_to_command.py        # Map gestures to robot commands
@@ -73,43 +76,20 @@ gesture_control_niryo_ws/
 │       └── CMakeLists.txt
 ```
 
-## Key Design Decisions:
+## Key Design Decisions
+1. Modular Package Structure
+gesture_recognition → Pure vision processing, no robot knowledge
+gesture_control_interface → Translates gestures to robot-agnostic commands
+niryo_control → Robot-specific implementation with abstraction for real/sim
+niryo_gazebo → Simulation assets
+gesture_control_bringup → System integration and launch files
 
-### 1. **Modular Package Structure**
-- **gesture_recognition**: Pure vision processing, no robot knowledge
-- **gesture_control_interface**: Translates gestures to robot-agnostic commands
-- **niryo_control**: Robot-specific implementation with abstraction for real/sim
-- **niryo_gazebo**: Simulation assets
-- **gesture_control_bringup**: System integration and launch files
+2. Message Flow
+`Camera → gesture_detector → Gesture.msg → gesture_to_command → RobotCommand.msg → robot_controller → Niryo (real/sim)`
 
-### 2. **Message Flow**
-```
-Camera → gesture_detector → Gesture.msg → gesture_to_command → RobotCommand.msg → robot_controller → Niryo (real/sim)
-```
+3. Suggested Gesture Mappings
+Gesture	Action
+Wave	Home position / Reset
+Thumbs Up	Execute predefined action / Confirm
+Thumbs Down	Stop / Cancel operation
 
-### 3. **Abstraction for Real/Sim**
-The `robot_controller.py` defines an interface, and you implement:
-- `real_robot_controller.py`: Uses Niryo's official ROS2 packages/API
-- `sim_robot_controller.py`: Uses standard ROS2 control interfaces for Gazebo
-
-### 4. **Suggested Gesture Mappings**
-- **Wave**: Home position / Reset
-- **Thumbs Up**: Execute predefined action / Confirm
-- **Thumbs Down**: Stop / Cancel operation
-
-### 5. **Custom Messages**
-
-**Gesture.msg**:
-```
-std_msgs/Header header
-string gesture_type    # "wave", "thumbs_up", "thumbs_down", "none"
-float32 confidence
-geometry_msgs/Point hand_position
-```
-
-**RobotCommand.msg**:
-```
-std_msgs/Header header
-string command_type    # "home", "execute", "stop"
-float64[] joint_targets
-geometry_msgs/Pose target_pose
