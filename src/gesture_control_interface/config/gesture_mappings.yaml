@@ -1,0 +1,51 @@
+basic:
+  wave:
+    action: "home"
+    description: "Move robot to home position"
+    parameters:
+      speed: 50
+      
+  thumbs_up:
+    action: "pick"
+    description: "Execute pick operation"
+    parameters:
+      grip_force: 500
+      approach_height: 0.15
+      
+  thumbs_down:
+    action: "place"
+    description: "Execute place operation"
+    parameters:
+      release_height: 0.10
+
+advanced:
+  wave:
+    action: "calibrate"
+    description: "Calibrate robot"
+    parameters:
+      auto_calibrate: true
+      
+  thumbs_up:
+    action: "execute_sequence"
+    description: "Execute predefined sequence"
+    parameters:
+      sequence_id: 1
+      
+  thumbs_down:
+    action: "stop"
+    description: "Emergency stop all movements"
+    parameters:
+      immediate: true
+
+custom:
+  wave:
+    action: "custom_1"
+    description: "Custom action 1"
+    
+  thumbs_up:
+    action: "custom_2"
+    description: "Custom action 2"
+    
+  thumbs_down:
+    action: "custom_3"
+    description: "Custom action 3"
