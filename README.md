@@ -74,6 +74,11 @@ gesture_control_niryo_ws/
 │       │   └── system_params.yaml           # Global parameters
 │       ├── package.xml
 │       └── CMakeLists.txt
+│
+│
+├── LICENSE
+│
+└── README.md
 ```
 
 ## Key Design Decisions
