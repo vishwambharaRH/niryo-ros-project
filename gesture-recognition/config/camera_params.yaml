@@ -1,0 +1,13 @@
+camera_handler:
+  ros__parameters:
+    # Camera device settings
+    camera_index: 0              # Default camera (0 for /dev/video0)
+    camera_width: 640            # Frame width
+    camera_height: 480           # Frame height
+    camera_fps: 30               # Frames per second
+    
+    # Optional: Use video file instead of camera
+    video_file: ''               # Path to video file (empty = use camera)
+    
+    # Output topic
+    output_topic: '/camera/image_raw'

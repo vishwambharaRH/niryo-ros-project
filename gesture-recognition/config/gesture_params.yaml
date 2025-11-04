@@ -1,0 +1,27 @@
+gesture_detector:
+  ros__parameters:
+    # Camera input topic
+    camera_topic: '/camera/image_raw'
+    
+    # MediaPipe detection parameters
+    detection_confidence: 0.7      # Min confidence for hand detection
+    tracking_confidence: 0.5       # Min confidence for hand tracking
+    
+    # Gesture recognition thresholds
+    gesture_confidence_threshold: 0.75  # Min confidence to publish gesture
+    
+    # Wave detection parameters
+    wave_detection_frames: 10      # Number of frames to analyze for wave
+    
+    # Debug and visualization
+    publish_debug_image: true      # Publish annotated image for debugging
+    flip_camera: false             # Flip camera horizontally (for mirror mode)
+
+gesture_classifier:
+  ros__parameters:
+    # Temporal filtering parameters
+    confidence_window_size: 5           # Number of frames to buffer
+    min_consecutive_detections: 3       # Required consecutive detections
+    
+    # Output topic
+    output_topic: '/gesture/classified'
