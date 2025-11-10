@@ -98,3 +98,8 @@ Wave	Home position / Reset
 Thumbs Up	Execute predefined action / Confirm
 Thumbs Down	Stop / Cancel operation
 
+4. Build
+Build only on ROS Humble, not Noetic or Jazzy.
+
+TODO: Reinstall Humble on fresh Ubuntu 22.04.
+
