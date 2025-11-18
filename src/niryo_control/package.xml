@@ -1,16 +1,33 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>niryo_control</name>
-  <version>0.0.1</version>
-  <description>niryo_control package</description>
+  <version>0.1.0</version>
+  <description>Robot controller package for Niryo Ned2 - real and simulated</description>
   <maintainer email="you@example.com">Your Name</maintainer>
   <license>MIT</license>
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  
   <buildtool_depend>ament_python</buildtool_depend>
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
+  
+  <!-- ROS2 Dependencies -->
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>control_msgs</depend>
+  
+  <!-- Custom message dependency -->
+  <depend>gesture_control_interface</depend>
+  
+  <!-- Python Dependencies (note: these should be installed via pip/apt) -->
+  <exec_depend>python3-numpy</exec_depend>
+  
+  <!-- Testing -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  
   <export>
     <build_type>ament_python</build_type>
   </export>

@@ -1,14 +1,27 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>niryo_gazebo</name>
-  <version>0.0.1</version>
-  <description>niryo_gazebo package</description>
+  <version>0.1.0</version>
+  <description>Gazebo simulation package for Niryo Ned2</description>
   <maintainer email="you@example.com">Your Name</maintainer>
   <license>MIT</license>
+  
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <buildtool_depend>ament_python</buildtool_depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>ros_gz_sim</exec_depend>
+  
+  <!-- ROS2 Dependencies -->
+  <depend>rclpy</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros_pkgs</depend>
+  <depend>gazebo_ros2_control</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>xacro</depend>
+  <depend>controller_manager</depend>
+  <depend>joint_trajectory_controller</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>forward_command_controller</depend>
+  <depend>rviz2</depend>
+  
   <export>
     <build_type>ament_cmake</build_type>
   </export>
