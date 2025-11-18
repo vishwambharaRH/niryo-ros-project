@@ -18,10 +18,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs geometry_msgs builtin_interfaces
 )
 
-# Install Python modules
-ament_python_install_package(${PROJECT_NAME})
-
-# Install Python executables
+# Install Python executables (from setup.py entry points)
 install(PROGRAMS
   gesture_control_interface/gesture_to_command.py
   gesture_control_interface/command_publisher.py
@@ -53,4 +50,3 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
-
